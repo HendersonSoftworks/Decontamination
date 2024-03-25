@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    [Header("WORLD STATS")]
+    [Header("WORLD")]
     public bool canMove = true;
     public Vector2 position;
 
@@ -14,10 +15,12 @@ public class PlayerMovementController : MonoBehaviour
         Flamethrower,
     };
 
-    [Header("COMBAT STATS")]
+    [Header("COMBAT")]
+    [SerializeField]
+    private GameObject weaponObj;
+    
     [SerializeField]
     private weapons currentWeapon;
-
 
     [SerializeField]
     private float speed;
@@ -26,15 +29,20 @@ public class PlayerMovementController : MonoBehaviour
     private float[] weaponDamages;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         position = transform.position;
+
+        ManageAnimation();
+
     }
 
     private void FixedUpdate()
@@ -42,6 +50,36 @@ public class PlayerMovementController : MonoBehaviour
         if (canMove)
         {
             ManageMovement();
+        }
+    }
+
+    private void ManageAnimation()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            spriteRenderer.flipX = true;
+            FlipWeaponX(true);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            spriteRenderer.flipX = false;
+            FlipWeaponX(false);
+        }
+    }
+
+    private void FlipWeaponX(bool isFlipped)
+    {
+        SpriteRenderer weaponSprite = weaponObj.GetComponent<SpriteRenderer>();
+
+        if (isFlipped)
+        {
+            weaponObj.transform.localPosition = new Vector2(-2, weaponObj.transform.localPosition.y);
+            weaponSprite.flipX = true;
+        }
+        else
+        {
+            weaponObj.transform.localPosition = new Vector2(2, weaponObj.transform.localPosition.y);
+            weaponSprite.flipX = false;
         }
     }
 
