@@ -68,11 +68,22 @@ public class EnemyMovementController : MonoBehaviour
         }
     }
 
+    private void FreezeConstraints()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    private void ReleaseConstraints()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             inContactWithPlayer = true;
+            FreezeConstraints();
         }
     }
 
@@ -81,6 +92,7 @@ public class EnemyMovementController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             inContactWithPlayer = false;
+            ReleaseConstraints();
         }
     }
 
