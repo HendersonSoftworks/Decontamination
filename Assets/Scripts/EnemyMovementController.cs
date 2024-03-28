@@ -61,28 +61,10 @@ public class EnemyMovementController : MonoBehaviour
         if (hAxis < 0)
         {
             spriteRenderer.flipX = true;
-            FlipWeaponX(true);
         }
         if (hAxis > 0)
         {
             spriteRenderer.flipX = false;
-            FlipWeaponX(false);
-        }
-    }
-
-    private void FlipWeaponX(bool isFlipped)
-    {
-        SpriteRenderer weaponSprite = combatController.weaponObj.GetComponent<SpriteRenderer>();
-
-        if (isFlipped)
-        {
-            combatController.weaponObj.transform.localPosition = new Vector2(-2, combatController.weaponObj.transform.localPosition.y);
-            weaponSprite.flipX = true;
-        }
-        else
-        {
-            combatController.weaponObj.transform.localPosition = new Vector2(2, combatController.weaponObj.transform.localPosition.y);
-            weaponSprite.flipX = false;
         }
     }
 

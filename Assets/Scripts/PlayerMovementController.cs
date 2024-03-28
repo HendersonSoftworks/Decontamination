@@ -40,7 +40,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (hAxis < 0)
         {
-
             spriteRenderer.flipX = true;
             FlipWeaponX(true);
         }
@@ -51,18 +50,18 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void FlipWeaponX(bool isFlipped)
+    public void FlipWeaponX(bool isFlipped)
     {
-        SpriteRenderer weaponSprite = combatController.weaponObj.GetComponent<SpriteRenderer>();
+        SpriteRenderer weaponSprite = combatController.currentWeaponObject.GetComponent<SpriteRenderer>();
 
         if (isFlipped)
         {
-            combatController.weaponObj.transform.localPosition = new Vector2(-2, combatController.weaponObj.transform.localPosition.y);
+            combatController.currentWeaponObject.transform.localPosition = new Vector2(-2, combatController.currentWeaponObject.transform.localPosition.y);
             weaponSprite.flipX = true;
         }
         else
         {
-            combatController.weaponObj.transform.localPosition = new Vector2(2, combatController.weaponObj.transform.localPosition.y);
+            combatController.currentWeaponObject.transform.localPosition = new Vector2(2, combatController.currentWeaponObject.transform.localPosition.y);
             weaponSprite.flipX = false;
         }
     }
@@ -82,12 +81,16 @@ public class PlayerMovementController : MonoBehaviour
         ManageAnimation(hAxis);
     }
 
+    public void SetVelocityToZero()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            print("OOF!");
-            rb.velocity = Vector2.zero;
+            SetVelocityToZero();
         }
     }
 }
