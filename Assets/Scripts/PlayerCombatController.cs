@@ -14,12 +14,8 @@ public class PlayerCombatController : MonoBehaviour
 
     public GameObject[] weaponObjects;
     public GameObject currentWeaponObject;
-
-    [SerializeField]
-    private Weapons currentWeapon;
-
-    [SerializeField]
-    private float[] weaponDamages;
+    public Weapons currentWeapon;
+    public float[] weaponDamages;
 
     private PlayerMovementController movementController;
     private SpriteRenderer spriteRenderer;
@@ -29,6 +25,8 @@ public class PlayerCombatController : MonoBehaviour
         movementController = GetComponent<PlayerMovementController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         StopAttack();
+
+        
     }
 
     void Update()
