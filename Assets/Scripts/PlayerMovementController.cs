@@ -5,44 +5,27 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    [Header("WORLD")]
     public bool canMove = true;
     public Vector2 position;
-
-    public enum weapons 
-    { 
-        PowerWasher,
-        Flamethrower,
-    };
-
-    [Header("COMBAT")]
-    [SerializeField]
-    private GameObject weaponObj;
-    
-    [SerializeField]
-    private weapons currentWeapon;
 
     [SerializeField]
     private float speed;
 
-    [SerializeField]
-    private float[] weaponDamages;
-
+    // Private properties
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private PlayerCombatController combatController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        combatController = GetComponent<PlayerCombatController>();
     }
 
     void Update()
     {
         position = transform.position;
-
-        ManageAnimation();
-
     }
 
     private void FixedUpdate()
@@ -53,14 +36,15 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void ManageAnimation()
+    private void ManageAnimation(float hAxis)
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (hAxis < 0)
         {
+
             spriteRenderer.flipX = true;
             FlipWeaponX(true);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (hAxis > 0)
         {
             spriteRenderer.flipX = false;
             FlipWeaponX(false);
@@ -69,16 +53,16 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FlipWeaponX(bool isFlipped)
     {
-        SpriteRenderer weaponSprite = weaponObj.GetComponent<SpriteRenderer>();
+        SpriteRenderer weaponSprite = combatController.weaponObj.GetComponent<SpriteRenderer>();
 
         if (isFlipped)
         {
-            weaponObj.transform.localPosition = new Vector2(-2, weaponObj.transform.localPosition.y);
+            combatController.weaponObj.transform.localPosition = new Vector2(-2, combatController.weaponObj.transform.localPosition.y);
             weaponSprite.flipX = true;
         }
         else
         {
-            weaponObj.transform.localPosition = new Vector2(2, weaponObj.transform.localPosition.y);
+            combatController.weaponObj.transform.localPosition = new Vector2(2, combatController.weaponObj.transform.localPosition.y);
             weaponSprite.flipX = false;
         }
     }
@@ -93,6 +77,9 @@ public class PlayerMovementController : MonoBehaviour
         // Move player in direction
         //transform.Translate(moveDir * Time.deltaTime * speed);
         rb.velocity = (moveDir * speed);
+
+        // Change animation depending on horizontal value
+        ManageAnimation(hAxis);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
