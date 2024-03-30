@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerUIManager : MonoBehaviour
 {
+    // References
+    [SerializeField]
+    private PlayerCombatController combatController;
+
+    // Weapons
     [SerializeField]
     private GameObject weaponPanel;
     [SerializeField]
@@ -16,14 +21,18 @@ public class PlayerUIManager : MonoBehaviour
     private GameObject firePanel;
     [SerializeField]
     private GameObject acidPanel;
-
     [SerializeField]
     private List<Color> uiColours;
     [SerializeField]
     private List<Image> uiImages;
 
-    [SerializeField]
-    private PlayerCombatController combatController;
+    // Fuels
+    public Slider waterFuelSlider;
+    public Slider fireFuelSlider;
+    public Slider acidFuelSlider;
+
+    // Health
+    public Image[] healthPackImages;
 
     void Start()
     {
@@ -47,7 +56,29 @@ public class PlayerUIManager : MonoBehaviour
 
     void Update()
     {
-        ManageWeaponSelectionUI();
+        ManageWeaponSelectionUI(); // TODO: Only call when switching weapons
+        ManageFuelUI();
+        ManageHealthPackUI();
+    }
+
+    private void ManageHealthPackUI()
+    {
+        foreach (var pack in healthPackImages)
+        {
+            pack.enabled = false;
+        }
+
+        for (int i = 0; i < combatController.healthPacks; i++)
+        {
+            healthPackImages[i].enabled = true;
+        }
+    }
+
+    private void ManageFuelUI()
+    {
+        waterFuelSlider.value = combatController.weaponFuels[0];
+        fireFuelSlider.value = combatController.weaponFuels[1];
+        acidFuelSlider.value = combatController.weaponFuels[2];
     }
 
     private void ManageWeaponSelectionUI()
