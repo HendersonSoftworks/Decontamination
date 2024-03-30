@@ -603,9 +603,9 @@ MonoBehaviour:
   currentWeaponObject: {fileID: 6089742182065893631}
   currentWeapon: 0
   weaponDamages:
-  - 0
-  - 0
-  - 0
+  - 0.25
+  - 0.25
+  - 0.25
 --- !u!58 &3011582940167780373
 CircleCollider2D:
   m_ObjectHideFlags: 0
