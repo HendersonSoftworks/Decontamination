@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 6979499533715337604}
   - component: {fileID: 2889773921205749711}
   - component: {fileID: 2287535379543157041}
+  - component: {fileID: 5070866055499832464}
   - component: {fileID: 3011582940167780373}
   - component: {fileID: 2046292394397470251}
   m_Layer: 0
@@ -584,6 +585,7 @@ MonoBehaviour:
   canMove: 1
   position: {x: 0, y: 0}
   speed: 6.5
+  pushRecovery: 1
 --- !u!114 &2287535379543157041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +608,45 @@ MonoBehaviour:
   - 0.25
   - 0.25
   - 0.25
+  weaponFuels:
+  - 0
+  - 100
+  - 100
+  isInvincible: 0
+  invincibilityWindow: 2
+  healthPacks: 8
+--- !u!114 &5070866055499832464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280975513599822614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290b1a3b981732d4fab9d3e9dde1305d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
+  weaponPanel: {fileID: 0}
+  panelCol: {r: 1, g: 0.35686275, b: 0, a: 1}
+  waterPanel: {fileID: 0}
+  firePanel: {fileID: 0}
+  acidPanel: {fileID: 0}
+  uiColours: []
+  uiImages: []
+  waterFuelSlider: {fileID: 0}
+  fireFuelSlider: {fileID: 0}
+  acidFuelSlider: {fileID: 0}
+  healthPackImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!58 &3011582940167780373
 CircleCollider2D:
   m_ObjectHideFlags: 0

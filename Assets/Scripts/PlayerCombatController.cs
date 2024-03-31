@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    // Weapons
     public enum Weapons
     {
         PowerWasher,
@@ -17,8 +18,13 @@ public class PlayerCombatController : MonoBehaviour
     public Weapons currentWeapon;
     public float[] weaponDamages;
     public float[] weaponFuels;
+
+    // Health
+    public bool isInvincible;
+    public float invincibilityWindow;
     public int healthPacks;
 
+    // References
     private PlayerMovementController movementController;
     private SpriteRenderer spriteRenderer;
 
@@ -58,6 +64,21 @@ public class PlayerCombatController : MonoBehaviour
         {
             StopAttack();
         }
+    }
+
+    public void TakeDamage()
+    {
+        healthPacks--;
+        isInvincible = true;
+        StartCoroutine(Invincibility());
+    }
+
+    private IEnumerator Invincibility()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        yield return new WaitForSeconds(invincibilityWindow);
+        isInvincible = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     public void SetFuel(float water, float fire, float acid)

@@ -10,6 +10,8 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float pushRecovery;
 
     // Private properties
     private Rigidbody2D rb;
@@ -84,6 +86,19 @@ public class PlayerMovementController : MonoBehaviour
     public void SetVelocityToZero()
     {
         rb.velocity = Vector2.zero;
+    }
+
+    public void PushPlayer(Vector2 dir, float pushForce)
+    {
+        rb.AddForce(dir * pushForce, ForceMode2D.Force);
+        StartCoroutine(RecoverMovement());
+    }
+
+    public IEnumerator RecoverMovement()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(pushRecovery);
+        canMove = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
