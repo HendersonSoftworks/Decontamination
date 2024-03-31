@@ -9,6 +9,7 @@ public class EnemyHealthManager : MonoBehaviour
     public Slider slider;
     public EnemyMovementController enemyMovement;
     public PlayerCombatController combatController;
+    public GameObject bloodSplatter;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class EnemyHealthManager : MonoBehaviour
 
     public void Die()
     {
+        Instantiate(bloodSplatter, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
