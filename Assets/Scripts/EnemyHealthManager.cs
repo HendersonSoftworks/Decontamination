@@ -11,6 +11,9 @@ public class EnemyHealthManager : MonoBehaviour
     public PlayerCombatController combatController;
     public GameObject bloodSplatter;
 
+    public enum Weaknesses { water, fire, acid}
+    public Weaknesses weakness;
+
     private void Start()
     {
         combatController = FindAnyObjectByType<PlayerCombatController>();
@@ -37,19 +40,15 @@ public class EnemyHealthManager : MonoBehaviour
         if (collision.tag == "Weapon")
         {
             float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon];
-            health -= currentDamage;
-
-            //switch (combatController.currentWeapon)
-            //{
-            //    case PlayerCombatController.Weapons.PowerWasher:
-            //        break;
-            //    case PlayerCombatController.Weapons.FlameThrower:
-            //        break;
-            //    case PlayerCombatController.Weapons.AcidBlaster:
-            //        break;
-            //    default:
-            //        break;
-            //}
+            
+            if ((int)combatController.currentWeapon == (int)weakness)
+            {
+                health -= currentDamage * combatController.weaponDamageMultipliers[1];
+            }
+            else
+            {
+                health -= currentDamage;
+            }
         }
     }
 }

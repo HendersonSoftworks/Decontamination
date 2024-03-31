@@ -17,6 +17,7 @@ public class PlayerCombatController : MonoBehaviour
     public GameObject currentWeaponObject;
     public Weapons currentWeapon;
     public float[] weaponDamages;
+    public float[] weaponDamageMultipliers;
     public float[] weaponFuels;
 
     // Health
@@ -35,7 +36,7 @@ public class PlayerCombatController : MonoBehaviour
         StopAttack();
 
         // Set water fuel to 100 and the rest to 0
-        SetFuel(100, 0, 0);
+        AddFuel(100, (int)Weapons.PowerWasher);
     }
 
     void Update()
@@ -81,11 +82,9 @@ public class PlayerCombatController : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
-    public void SetFuel(float water, float fire, float acid)
+    public void AddFuel(float amount, int weaponType)
     {
-        weaponFuels[0] += water;
-        weaponFuels[1] += fire;
-        weaponFuels[2] += acid;
+        weaponFuels[weaponType] += amount;
     }
 
     private void StartAttack()
@@ -105,22 +104,8 @@ public class PlayerCombatController : MonoBehaviour
 
     private void ReduceWeaponFuel()
     {
-        switch (currentWeapon)
-        {
-            case Weapons.PowerWasher:
-                SetFuel(-0.1f, 0, 0);
-                break;
-            case Weapons.FlameThrower:
-                SetFuel(0, -0.1f, 0);
-                break;
-            case Weapons.AcidBlaster:
-                SetFuel(0, 0, -0.1f);
-                break;
-            default:
-                break;
-        }
+        AddFuel(-0.1f, (int)currentWeapon);
     }
-
 
     private void ManageWeaponSelection()
     {

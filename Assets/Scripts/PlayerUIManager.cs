@@ -21,8 +21,7 @@ public class PlayerUIManager : MonoBehaviour
     private GameObject firePanel;
     [SerializeField]
     private GameObject acidPanel;
-    [SerializeField]
-    private List<Color> uiColours;
+    public List<Color> uiColours;
     [SerializeField]
     private List<Image> uiImages;
 
@@ -34,11 +33,14 @@ public class PlayerUIManager : MonoBehaviour
     // Health
     public Image[] healthPackImages;
 
+    private void Awake()
+    {
+        GetUIImagesAndColours();
+    }
+
     void Start()
     {
         combatController = GetComponent<PlayerCombatController>();
-
-        GetUIImagesAndColours();
     }
 
     private void GetUIImagesAndColours()
