@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,16 @@ public class EnemyMovementController : MonoBehaviour
     public GameObject player;
     public bool inContactWithPlayer = false;
     public bool beingHit = false;
+    public enum MoveStates { idle, chasing }
+    public MoveStates currentMoveState;
+    public float playerDist;
+    public float moveToplayerDist;
     #endregion
 
     #region Private
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private PlayerCombatController combatController;
-
     #endregion
 
     // Start is called before the first frame update
@@ -30,11 +34,31 @@ public class EnemyMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ManageMoveState();
         ManageMovement();
+    }
+
+    private void ManageMoveState()
+    {
+        playerDist = Vector2.Distance(player.transform.position, transform.position);
+        if (playerDist < moveToplayerDist)
+        {
+            currentMoveState = MoveStates.chasing;
+        }
+        else
+        {
+            currentMoveState = MoveStates.idle;
+        }
     }
 
     public void ManageMovement()
     {
+        if (currentMoveState == MoveStates.idle)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         if (beingHit)
         {
             Vector2 moveDir = -(player.transform.position - transform.position).normalized;
@@ -42,7 +66,7 @@ public class EnemyMovementController : MonoBehaviour
             return;
         }
 
-        // Move player in direction
+        // Move in player direction
         if (inContactWithPlayer)
         {
             rb.velocity = Vector2.zero;
@@ -110,5 +134,11 @@ public class EnemyMovementController : MonoBehaviour
         {
             beingHit = false;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, moveToplayerDist);
     }
 }
