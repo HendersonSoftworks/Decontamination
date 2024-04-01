@@ -41,14 +41,10 @@ public class PlayerCombatController : MonoBehaviour
 
     void Update()
     {
-        // Clamp fuels
-        foreach (float fuel in weaponFuels)
-        {
-            Mathf.Clamp(fuel, 0, 100);
-        }
-
+        ClampFuels();
         ManageWeaponSelection();
         ManageWeaponObject();
+        RegenerateWater();
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -65,6 +61,11 @@ public class PlayerCombatController : MonoBehaviour
         {
             StopAttack();
         }
+    }
+
+    private void RegenerateWater()
+    {
+        weaponFuels[(int)Weapons.PowerWasher] += 0.05f;
     }
 
     public void TakeDamage()
@@ -149,6 +150,14 @@ public class PlayerCombatController : MonoBehaviour
         else
         {
             movementController.FlipWeaponX(false);
+        }
+    }
+
+    private void ClampFuels()
+    {
+        for (int i = 0; i < weaponFuels.Length; i++)
+        {
+            weaponFuels[i] = Mathf.Clamp(weaponFuels[i], 0, 100);
         }
     }
 }

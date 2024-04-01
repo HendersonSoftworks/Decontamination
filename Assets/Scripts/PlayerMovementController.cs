@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    public GameObject mainCamera;
     public bool canMove = true;
     public Vector2 position;
 
@@ -23,12 +24,15 @@ public class PlayerMovementController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         combatController = GetComponent<PlayerCombatController>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     void Update()
     {
         position = transform.position;
+        MoveMainCamera(mainCamera);
     }
+
 
     private void FixedUpdate()
     {
@@ -36,6 +40,12 @@ public class PlayerMovementController : MonoBehaviour
         {
             ManageMovement();
         }
+    }
+
+    private void MoveMainCamera(GameObject _mainCam)
+    {
+        Vector3 camPos = new Vector3(position.x, position.y, -10);
+        _mainCam.transform.position = camPos;
     }
 
     private void ManageAnimation(float hAxis)

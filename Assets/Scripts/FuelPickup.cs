@@ -22,6 +22,8 @@ public class FuelPickup : MonoBehaviour
         playerUIManager = FindObjectOfType<PlayerUIManager>();
         audioSource = GetComponent<AudioSource>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+
+        SetFuel(fuelType);
     }
 
     public void SetFuel(FuelTypes _fuelType)
