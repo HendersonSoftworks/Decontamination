@@ -319,6 +319,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inContactWithPlayer: 0
   beingHit: 0
+  canMove: 1
   currentMoveState: 0
   playerDist: 0
   moveToplayerDist: 7
