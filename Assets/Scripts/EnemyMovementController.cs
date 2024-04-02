@@ -10,6 +10,7 @@ public class EnemyMovementController : MonoBehaviour
     public GameObject player;
     public bool inContactWithPlayer = false;
     public bool beingHit = false;
+    public bool canMove;
     public enum MoveStates { idle, chasing }
     public MoveStates currentMoveState;
     public float playerDist;
@@ -19,7 +20,6 @@ public class EnemyMovementController : MonoBehaviour
     #region Private
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private PlayerCombatController combatController;
     #endregion
 
     // Start is called before the first frame update
@@ -34,8 +34,11 @@ public class EnemyMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ManageMoveState();
-        ManageMovement();
+        if (canMove)
+        {
+            ManageMoveState();
+            ManageMovement();
+        }
     }
 
     private void ManageMoveState()
@@ -100,6 +103,11 @@ public class EnemyMovementController : MonoBehaviour
     private void ReleaseConstraints()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void SetVelocityToZero()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

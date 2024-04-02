@@ -7,6 +7,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     public GameObject mainCamera;
     public bool canMove = true;
+    public bool isPaused = false;
     public Vector2 position;
 
     [SerializeField]
@@ -36,6 +37,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isPaused)
+        {
+            return;
+        }
+
         if (canMove)
         {
             ManageMovement();

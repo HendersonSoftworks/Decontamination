@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelText: {fileID: 8332886496265323352, guid: 00c61e41b2fe8184d85126f39ed1a4ae, type: 3}
-  fuelType: 0
+  fuelType: 1
 --- !u!212 &7131383656742826284
 SpriteRenderer:
   m_ObjectHideFlags: 0
