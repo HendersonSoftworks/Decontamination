@@ -22,7 +22,6 @@ public class DoorController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         playerMoveController = FindAnyObjectByType<PlayerMovementController>();
-        enemyMoveControllers = FindObjectsOfType<EnemyMovementController>();
     }
 
     public void TeleportPlayer()
@@ -60,6 +59,7 @@ public class DoorController : MonoBehaviour
             col = collision;
             animator.SetTrigger("Open");
             audioSource.PlayOneShot(audioSource.clip);
+            enemyMoveControllers = FindObjectsOfType<EnemyMovementController>();
 
             PauseActors();
         }
