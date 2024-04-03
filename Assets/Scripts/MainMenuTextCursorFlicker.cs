@@ -6,8 +6,12 @@ using TMPro;
 public class MainMenuTextCursorFlicker : MonoBehaviour
 {
     public TMP_Text text;
+    public MainMenuManager mainMenu;
+
     private string newText;
     private string oldText;
+    private bool appendingText;
+
 
     private bool isRoutineRunning = false;
 
@@ -21,7 +25,24 @@ public class MainMenuTextCursorFlicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isRoutineRunning)
+        if (mainMenu.isGameStarting && !appendingText)
+        {
+            text.text = "";
+            appendingText = true;
+            //StopCoroutine(SetText());
+            StopAllCoroutines();
+        }
+        else if (appendingText)
+        {
+            if (text.text == "...........................................................................................................................................................................................................................................................................................................................................................................................................................................")
+            {
+                return;
+            }
+
+            text.text += ".";
+        }
+
+        if ((!isRoutineRunning && !mainMenu.isGameStarting) && !appendingText)
         {
             StartCoroutine(SetText());
         }

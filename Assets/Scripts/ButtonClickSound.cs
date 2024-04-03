@@ -8,6 +8,8 @@ public class ButtonClickSound : MonoBehaviour
 
     [SerializeField]
     private AudioClip buttonClickClip;
+    [SerializeField]
+    private AudioClip floppyClip;
 
     private void Start()
     {
@@ -17,5 +19,10 @@ public class ButtonClickSound : MonoBehaviour
     public void PlayButtonClickSound()
     {
         audioSource.PlayOneShot(buttonClickClip);
+    }
+
+    public void PlayFloppySound()
+    {
+        audioSource.PlayOneShot(floppyClip);
     }
 }
