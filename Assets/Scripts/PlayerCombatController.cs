@@ -44,7 +44,6 @@ public class PlayerCombatController : MonoBehaviour
         ClampFuels();
         ManageWeaponSelection();
         ManageWeaponObject();
-        RegenerateWater();
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -60,6 +59,7 @@ public class PlayerCombatController : MonoBehaviour
         else
         {
             StopAttack();
+            RegenerateWater();
         }
     }
 

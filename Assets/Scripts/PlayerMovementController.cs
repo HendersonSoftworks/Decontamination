@@ -9,11 +9,14 @@ public class PlayerMovementController : MonoBehaviour
     public bool canMove = true;
     public bool isPaused = false;
     public Vector2 position;
+    public GameObject flashLight;
 
     [SerializeField]
     private float speed;
     [SerializeField]
     private float pushRecovery;
+    
+    
 
     // Private properties
     private Rigidbody2D rb;
@@ -32,6 +35,15 @@ public class PlayerMovementController : MonoBehaviour
     {
         position = transform.position;
         MoveMainCamera(mainCamera);
+
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(flashLight.transform.position);
+
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        flashLight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
 
@@ -76,11 +88,15 @@ public class PlayerMovementController : MonoBehaviour
         {
             combatController.currentWeaponObject.transform.localPosition = new Vector2(-2, combatController.currentWeaponObject.transform.localPosition.y);
             weaponSprite.flipX = true;
+
+            flashLight.transform.rotation = new Quaternion(flashLight.transform.rotation.x, flashLight.transform.rotation.y, 0.70f, flashLight.transform.rotation.w);
         }
         else
         {
             combatController.currentWeaponObject.transform.localPosition = new Vector2(2, combatController.currentWeaponObject.transform.localPosition.y);
             weaponSprite.flipX = false;
+
+            flashLight.transform.rotation = new Quaternion(flashLight.transform.rotation.x, flashLight.transform.rotation.y, -0.70f, flashLight.transform.rotation.w);
         }
     }
 

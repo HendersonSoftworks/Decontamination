@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa207b81807e5b6468563f2bc4219b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthCanvas: {fileID: 3632396893618982276}
 --- !u!114 &5497988537481231910
 MonoBehaviour:
   m_ObjectHideFlags: 0
