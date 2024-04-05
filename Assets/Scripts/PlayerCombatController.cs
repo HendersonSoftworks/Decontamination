@@ -53,7 +53,7 @@ public class PlayerCombatController : MonoBehaviour
             }
             else
             {
-                print("No fuel!");
+                StopAttack();
             }
         }
         else
