@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class PlayerUIManager : MonoBehaviour
     // Health
     public Image[] healthPackImages;
 
+    // Geiger
+    public Pickup[] pickups;
+    [SerializeField]
+    private Animator geigerAnimator;
+
     private void Awake()
     {
         GetUIImagesAndColours();
@@ -41,6 +47,7 @@ public class PlayerUIManager : MonoBehaviour
     void Start()
     {
         combatController = GetComponent<PlayerCombatController>();
+        pickups = FindObjectsOfType<Pickup>();
     }
 
     private void GetUIImagesAndColours()
@@ -61,6 +68,27 @@ public class PlayerUIManager : MonoBehaviour
         ManageWeaponSelectionUI(); // TODO: Only call when switching weapons
         ManageFuelUI();
         ManageHealthPackUI();
+        ManageGeiger();
+    }
+
+    private void ManageGeiger()
+    {
+        foreach (Pickup pickup in pickups)
+        {
+            if (pickup.distFromPlayer < pickup.audioMaxDist + 1)
+            {
+                Light2D light2D = pickup.GetComponent<Light2D>();
+
+                if (light2D.intensity > 0f && pickup.distFromPlayer < pickup.audioMaxDist)
+                {
+                    geigerAnimator.SetBool("Activate", true);
+                }
+                else
+                {
+                    geigerAnimator.SetBool("Activate", false);
+                }
+            }
+        }
     }
 
     private void ManageHealthPackUI()

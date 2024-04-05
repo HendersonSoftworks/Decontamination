@@ -5,8 +5,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Pickup : MonoBehaviour
 {
-    [SerializeField]
-    private Animator geigerAnimator;
+    public float audioMaxDist;
+    public float distFromPlayer;
 
     private PlayerCombatController combatController;
     private Light2D light2D;
@@ -30,15 +30,8 @@ public class Pickup : MonoBehaviour
             audioSource.enabled = false;
         }
 
-        float dist = Vector2.Distance(transform.position, combatController.transform.position);
-        if (dist < 6 && light2D.intensity > 0)
-        {
-            geigerAnimator.SetBool("Activate", true);
-        }
-        else
-        {
-            geigerAnimator.SetBool("Activate", false);
-        }
+        distFromPlayer = Vector2.Distance(transform.position, combatController.transform.position);
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
