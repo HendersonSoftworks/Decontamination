@@ -19,6 +19,8 @@ public class PlayerCombatController : MonoBehaviour
     public float[] weaponDamages;
     public float[] weaponDamageMultipliers;
     public float[] weaponFuels;
+    public float fuelReduction;
+    public float fuelRegeneration;
 
     // Health
     public bool isInvincible;
@@ -65,7 +67,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void RegenerateWater()
     {
-        weaponFuels[(int)Weapons.PowerWasher] += 0.05f;
+        weaponFuels[(int)Weapons.PowerWasher] += (fuelRegeneration * Time.deltaTime);
     }
 
     public void TakeDamage()
@@ -105,7 +107,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void ReduceWeaponFuel()
     {
-        AddFuel(-0.1f, (int)currentWeapon);
+        AddFuel(-(fuelReduction * Time.deltaTime), (int)currentWeapon);
     }
 
     private void ManageWeaponSelection()

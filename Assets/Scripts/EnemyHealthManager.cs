@@ -56,7 +56,7 @@ public class EnemyHealthManager : MonoBehaviour
     {
         if (collision.tag == "Weapon")
         {
-            float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon];
+            float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon] * Time.deltaTime;
 
             // Irradiated enemy - doesn't take damage until the radiation has been cleansed
             if (light2D != null && light2D.intensity > 0)

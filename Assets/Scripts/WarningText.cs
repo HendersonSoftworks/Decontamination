@@ -8,6 +8,9 @@ public class WarningText : MonoBehaviour
     public float disableDelay;
     public float disableSpeed;
     public string fullText;
+    private string warningText = "ALL CONTAMINANTS MUST BE CLEANSED ";
+    private string successText= "ALL CONTAMINANTS CLEANSED - THIS IS ACCEPTABLE";
+
     private string currentText = "";
     private TextMeshProUGUI textMesh;
 
@@ -18,7 +21,7 @@ public class WarningText : MonoBehaviour
         textMesh = GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
 
-        fullText = textMesh.text;
+        fullText = warningText;
         textMesh.text = "";
 
         textMesh.enabled = false;
@@ -27,7 +30,24 @@ public class WarningText : MonoBehaviour
 
     public void AnimateWarningText()
     {
+        fullText = warningText;
+
+        StopAllCoroutines();
         textMesh.enabled = true;
+        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1);
+
+        StartCoroutine(ShowText());
+    }
+
+    // zzz
+    public void AnimateSuccessText()
+    {
+        fullText = successText;
+
+        StopAllCoroutines();
+        textMesh.enabled = true;
+        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1);
+
         StartCoroutine(ShowText());
     }
 
@@ -52,7 +72,7 @@ public class WarningText : MonoBehaviour
     private IEnumerator DisableText()
     {
         textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 
-            textMesh.color.a - (disableSpeed * Time.deltaTime));
+            Mathf.Clamp(textMesh.color.a - (disableSpeed * Time.deltaTime ), 0.05f, 1));
         yield return new WaitForSeconds(disableDelay);
         textMesh.enabled = false;
     }

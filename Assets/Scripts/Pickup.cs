@@ -43,7 +43,7 @@ public class Pickup : MonoBehaviour
     {
         if (collision.tag == "Weapon" && combatController.currentWeapon == 0)
         {
-            float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon];
+            float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon] * Time.deltaTime;
 
             light2D.intensity -= (currentDamage * combatController.weaponDamageMultipliers[0]) / 10;
 
