@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 2046292394397470251}
   - component: {fileID: 7044918129908560181}
   - component: {fileID: 3532940375732862594}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1035,9 +1035,9 @@ MonoBehaviour:
   currentWeaponObject: {fileID: 6089742182065893631}
   currentWeapon: 0
   weaponDamages:
-  - 0.25
-  - 0.25
-  - 0.25
+  - 10
+  - 7
+  - 7
   weaponDamageMultipliers:
   - 10
   - 10
@@ -1046,6 +1046,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  fuelReduction: 20
+  fuelRegeneration: 10
   isInvincible: 0
   invincibilityWindow: 2
   healthPacks: 8

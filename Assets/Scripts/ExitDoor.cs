@@ -20,11 +20,23 @@ public class ExitDoor : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
+    public IEnumerator DelayOpenCompleteMenu()
+    {
+        yield return new WaitForSeconds(10f);
+        gameManager.OpenLevelCompleteScreen();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && gameManager.pickups.Count > 0)
         {
             warningText.AnimateWarningText();
+        }
+
+        if (collision.tag == "Player" && gameManager.pickups.Count <= 0)
+        {
+            warningText.AnimateSuccessText();
+            StartCoroutine(DelayOpenCompleteMenu());
         }
     }
 }

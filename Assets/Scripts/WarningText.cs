@@ -8,7 +8,7 @@ public class WarningText : MonoBehaviour
     public float disableDelay;
     public float disableSpeed;
     public string fullText;
-    private string warningText = "ALL CONTAMINANTS MUST BE CLEANSED ";
+    private string warningText = "ALL CONTAMINANTS MUST BE CLEANSED";
     private string successText= "ALL CONTAMINANTS CLEANSED - THIS IS ACCEPTABLE";
 
     private string currentText = "";
@@ -39,14 +39,13 @@ public class WarningText : MonoBehaviour
         StartCoroutine(ShowText());
     }
 
-    // zzz
     public void AnimateSuccessText()
     {
         fullText = successText;
 
         StopAllCoroutines();
         textMesh.enabled = true;
-        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1);
+        textMesh.color = new Color(textMesh.color.r, 1, textMesh.color.b, 1);
 
         StartCoroutine(ShowText());
     }
@@ -58,7 +57,7 @@ public class WarningText : MonoBehaviour
 
     private IEnumerator ShowText()
     {
-        for (int i = 0; i < fullText.Length; i++)
+        for (int i = 0; i < fullText.Length+1; i++)
         {
             currentText = fullText.Substring(0, i);
             GetComponent<TMPro.TMP_Text>().text = currentText;

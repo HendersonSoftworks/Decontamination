@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public bool isPaused;
     public GameObject pauseMenu;
+    public GameObject levelCompleteMenu;
     public List <Pickup> pickups;
 
     [SerializeField]
@@ -35,6 +37,23 @@ public class GameManager : MonoBehaviour
         ManagePauseMenu();
     }
 
+    public void OpenLevelCompleteScreen()
+    {
+        isPaused = true;
+        levelCompleteMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void LoadHub()
+    {
+        SceneManager.LoadScene("Hub");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void RefreshPickupsArray()
     {
         pickups.Clear();
@@ -47,7 +66,6 @@ public class GameManager : MonoBehaviour
                 pickups.Add(pickup);
             }
         }
-
     }
 
     public void SetRemainingPickupUI()
@@ -72,6 +90,11 @@ public class GameManager : MonoBehaviour
 
     private void OpenPauseMenu()
     {
+        if (levelCompleteMenu.activeInHierarchy)
+        {
+            return;
+        }
+
         isPaused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
