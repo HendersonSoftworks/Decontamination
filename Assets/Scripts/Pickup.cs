@@ -7,11 +7,13 @@ public class Pickup : MonoBehaviour
 {
     public float audioMaxDist;
     public float distFromPlayer;
+    public bool isIrradiated;
 
     private PlayerCombatController combatController;
     private Light2D light2D;
     private Rigidbody2D rb;
     private AudioSource audioSource;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -19,6 +21,9 @@ public class Pickup : MonoBehaviour
         light2D = GetComponent<Light2D>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        gameManager = FindAnyObjectByType<GameManager>();
+
+        isIrradiated = true;
     }
 
     void Update()
@@ -44,6 +49,13 @@ public class Pickup : MonoBehaviour
 
             Vector2 moveDir = -(combatController.transform.position - transform.position).normalized;
             rb.velocity = (moveDir * 1);
+
+            if (light2D.intensity <= 0 && isIrradiated)
+            {
+                isIrradiated = false;
+                gameManager.RefreshPickupsArray();
+                gameManager.SetRemainingPickupUI();
+            }
         }
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4375094708113264090}
   - component: {fileID: 7293332600759789665}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 511889015013138201}
   - component: {fileID: 715221890331866692}
   - component: {fileID: 5178001432488561579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 363123311827887922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 2778966816005007371}
   - component: {fileID: 9209326671358897975}
   - component: {fileID: 2462568413622758226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 3951962664403139614}
   - component: {fileID: 602997752221242308}
   - component: {fileID: 3613640137882372825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IrradiatedZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4264572720794545926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 5564863173214073008}
   - component: {fileID: 3449887315568570263}
   - component: {fileID: 2944846432120652257}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 1520579423221652695}
   - component: {fileID: 5754443351003660032}
   - component: {fileID: 902793324987546461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

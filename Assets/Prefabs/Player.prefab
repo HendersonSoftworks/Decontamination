@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 2046292394397470251}
   - component: {fileID: 7044918129908560181}
   - component: {fileID: 3532940375732862594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1081,6 +1081,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  pickups: []
+  geigerAnimator: {fileID: 0}
 --- !u!58 &3011582940167780373
 CircleCollider2D:
   m_ObjectHideFlags: 0

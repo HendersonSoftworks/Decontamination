@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5400725692896865344}
   - component: {fileID: 5795872718187094038}
   - component: {fileID: 5877297771614977585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232447986379753529}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 1097985536326068272}
   - component: {fileID: 2775707047164790112}
   - component: {fileID: 845332931135126141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7333076778752816996}
   - component: {fileID: 8266048924041086701}
   - component: {fileID: 5892300095409238132}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa207b81807e5b6468563f2bc4219b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collidingObjects: []
   healthCanvas: {fileID: 3632396893618982276}
 --- !u!114 &5497988537481231910
 MonoBehaviour:
@@ -342,6 +343,7 @@ MonoBehaviour:
   combatController: {fileID: 0}
   bloodSplatter: {fileID: 6955384395940951829, guid: dea4ead3a7f75ca49addce0e702e7212, type: 3}
   weakness: 1
+  light2D: {fileID: 0}
 --- !u!50 &7333076778752816996
 Rigidbody2D:
   serializedVersion: 4
@@ -447,7 +449,7 @@ GameObject:
   - component: {fileID: 4260705616679691170}
   - component: {fileID: 703887957733209236}
   - component: {fileID: 8162560578924837216}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +550,7 @@ GameObject:
   - component: {fileID: 2442535835118441835}
   - component: {fileID: 5676420318741259016}
   - component: {fileID: 8792031647265623765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3823311932438642378}
   - component: {fileID: 5214073806123929664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4265616772408162963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2,22 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public bool isPaused;
     public GameObject pauseMenu;
+    public List <Pickup> pickups;
 
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private TextMeshProUGUI remainingTextMesh;
 
+    private int initialPickupNum;
     private PlayerCombatController playerCombat;
 
     void Start()
     {
         player = FindAnyObjectByType<PlayerCombatController>().gameObject;
         playerCombat = player.GetComponent<PlayerCombatController>();
-
+        RefreshPickupsArray();
+        initialPickupNum = pickups.Count;
+        SetRemainingPickupUI();
         ClosePauseMenu();
     }
 
@@ -25,6 +33,26 @@ public class GameManager : MonoBehaviour
     {
         CheckHealth();
         ManagePauseMenu();
+    }
+
+    public void RefreshPickupsArray()
+    {
+        pickups.Clear();
+
+        Pickup[] tempPickups = FindObjectsOfType<Pickup>();
+        foreach (Pickup pickup in tempPickups)
+        {
+            if (pickup.isIrradiated)
+            {
+                pickups.Add(pickup);
+            }
+        }
+
+    }
+
+    public void SetRemainingPickupUI()
+    {
+        remainingTextMesh.text = pickups.Count + " I " + initialPickupNum;
     }
 
     private void ManagePauseMenu()
