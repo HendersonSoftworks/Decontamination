@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ButtonClickSound : MonoBehaviour
 {
+    public AudioClip buttonClickClip;
+
     private AudioSource audioSource;
 
-    [SerializeField]
-    private AudioClip buttonClickClip;
     [SerializeField]
     private AudioClip floppyClip;
 

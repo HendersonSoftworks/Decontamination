@@ -7,6 +7,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     public GameObject mainCamera;
     public bool canMove = true;
+    public bool inDialogue = false;
     public bool isPaused = false;
     public Vector2 position;
     public GameObject flashLight;
@@ -102,6 +103,11 @@ public class PlayerMovementController : MonoBehaviour
 
     public void ManageMovement()
     {
+        if (inDialogue)
+        {
+            return;
+        }
+
         // Get move direction
         float hAxis = Input.GetAxisRaw("Horizontal");
         float vAxis = Input.GetAxisRaw("Vertical");

@@ -12,9 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject levelCompleteMenu;
     public List <Pickup> pickups;
+    public GameObject player;
 
-    [SerializeField]
-    private GameObject player;
     [SerializeField]
     private TextMeshProUGUI remainingTextMesh;
 

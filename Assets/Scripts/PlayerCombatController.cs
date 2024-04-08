@@ -47,7 +47,7 @@ public class PlayerCombatController : MonoBehaviour
         ManageWeaponSelection();
         ManageWeaponObject();
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !movementController.inDialogue)
         {
             if (weaponFuels[(int)currentWeapon] > 0)
             {

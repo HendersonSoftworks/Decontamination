@@ -10,6 +10,7 @@ TagManager:
   - Pickup
   - Wall
   - Door
+  - NPC
   layers:
   - Default
   - TransparentFX
