@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static NPC currentNPC;
+
     public bool isPaused;
     public GameObject pauseMenu;
     public GameObject levelCompleteMenu;

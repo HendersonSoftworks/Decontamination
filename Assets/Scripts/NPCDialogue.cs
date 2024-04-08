@@ -7,27 +7,38 @@ public class NPCDialogue : MonoBehaviour
 {
     public float textSpeed;
     public string fullText;
- 
+    public NPC currentNPC;
+
     [SerializeField]
     private TextMeshProUGUI textMesh;
 
     private string currentText = "";
     private AudioSource audioSource;
 
-    public void AnimateText(string text)
+
+    public void AnimateText()
     {
+        StopAllCoroutines();
+        //ClearLines();
+
         textMesh = GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
+        fullText = currentNPC.lines[currentNPC.lineNum];
 
-        //fullText = warningText;
-        textMesh.text = "";
-
-
-        fullText = text;
-
-        StopAllCoroutines();
         textMesh.enabled = true;
-        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1);
+
+        if (currentNPC.lineNum % 2 == 0)
+        {
+            audioSource.pitch = 0.9f;
+            textMesh.color = Color.white;
+            textMesh.alignment = TextAlignmentOptions.TopRight;
+        }
+        else
+        {
+            audioSource.pitch = 1;
+            textMesh.color = Color.yellow;
+            textMesh.alignment = TextAlignmentOptions.TopLeft;
+        }
 
         StartCoroutine(ShowText());
     }
@@ -35,6 +46,7 @@ public class NPCDialogue : MonoBehaviour
     public void ClearLines()
     {
         textMesh.text = "";
+        currentText = "";
     }
 
     private IEnumerator ShowText()
@@ -44,9 +56,7 @@ public class NPCDialogue : MonoBehaviour
             currentText = fullText.Substring(0, i);
             GetComponent<TMPro.TMP_Text>().text = currentText;
             audioSource.PlayOneShot(audioSource.clip);
-            //float randFloat = Random.Range(0.1f, 0.25f);
             yield return new WaitForSeconds(textSpeed);
-            //DisableWarningText();
         }
     }
 }

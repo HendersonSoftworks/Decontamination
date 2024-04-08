@@ -2265,8 +2265,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283236096
-  m_fontColor: {r: 0, g: 1, b: 0.29939365, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8963,10 +8963,12 @@ MonoBehaviour:
   dialoguePanel: {fileID: 463033008}
   lineNum: 0
   lines:
-  - My name is John!
-  - I like cheese!
-  - Where are you from?
+  - Hi there, name's Hans. Second rank decontaminator.
+  - Nice to meet you, Hans. I'm just starting out.
+  - Oh Really? Well, good luck out there. Try not to get killed.
+  - I'll try...
   currentLine: 
+  playerLines: []
 --- !u!82 &1288844598
 AudioSource:
   m_ObjectHideFlags: 0

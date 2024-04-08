@@ -5,11 +5,15 @@ using UnityEngine;
 public class ButtonClickSound : MonoBehaviour
 {
     public AudioClip buttonClickClip;
+    public AudioClip selectClip;
 
     private AudioSource audioSource;
 
     [SerializeField]
     private AudioClip floppyClip;
+    
+    
+
 
     private void Start()
     {

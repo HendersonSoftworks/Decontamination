@@ -6,6 +6,9 @@ using TMPro;
 
 public class NPC : MonoBehaviour
 {
+    public int lineNum;
+    public string[] lines;
+
     [SerializeField]
     private GameObject dialogueIcon;
     [SerializeField]
@@ -15,11 +18,9 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private GameObject dialoguePanel;
     [SerializeField]
-    private int lineNum;
-    [SerializeField]
-    private string[] lines;
-    [SerializeField]
     private string currentLine;
+    [SerializeField]
+    private string[] playerLines;
 
     private GameManager gameManager;
     private ButtonClickSound buttonAudio;
@@ -27,18 +28,19 @@ public class NPC : MonoBehaviour
     private PlayerMovementController playerMovement;
     private Collider2D npcCollider2D;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         buttonAudio = FindAnyObjectByType<ButtonClickSound>();
         audioSource = GetComponent<AudioSource>();
         playerMovement = FindAnyObjectByType<PlayerMovementController>();
-        npcCollider2D = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
+        if (this != GameManager.currentNPC)
+            return;
+
         if (!playerMovement.inDialogue && dialogueIcon.activeInHierarchy)
             if (Input.GetKeyDown(KeyCode.Space))
                 EnterDialogueState();
@@ -50,7 +52,7 @@ public class NPC : MonoBehaviour
 
     private void EnterDialogueState()
     {
-        npcCollider2D.enabled = false;
+        //currentNPC = this;
         playerMovement.inDialogue = true;
         playerMovement.SetVelocityToZero();
     }
@@ -60,7 +62,8 @@ public class NPC : MonoBehaviour
         if (lineNum < lines.Length)
         {
             dialoguePanel.SetActive(true);
-            npcDialogue.AnimateText(lines[lineNum]);
+            //npcDialogue.AnimateText(this, lines[lineNum], lineNum);
+            npcDialogue.AnimateText();
             lineNum++;
         }
         else
@@ -79,7 +82,7 @@ public class NPC : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         npcDialogue.ClearLines();
-        npcCollider2D.enabled = true;
+        //npcCollider2D.enabled = true;
         StartCoroutine(EnableAttack());
     }
 
@@ -94,6 +97,8 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             dialogueIcon.SetActive(true);
+            GameManager.currentNPC = this;
+            npcDialogue.currentNPC = GameManager.currentNPC.GetComponent<NPC>();
         }
     }
 
