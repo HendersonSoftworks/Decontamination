@@ -11,15 +11,20 @@ public class NPCDialogue : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI textMesh;
+    [SerializeField]
+    private Image portrait2;
 
     private string currentText = "";
     private AudioSource audioSource;
 
+    private void Start()
+    {
+        //portrait2.transform.localScale = new Vector2(-portrait2.transform.localScale.x, portrait2.transform.localScale.y);
+    }
 
     public void AnimateText()
     {
         StopAllCoroutines();
-        //ClearLines();
 
         textMesh = GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();

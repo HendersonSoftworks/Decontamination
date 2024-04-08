@@ -20,19 +20,14 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private string currentLine;
     [SerializeField]
-    private string[] playerLines;
+    private Sprite portrait;
+    [SerializeField]
+    private Image portraitUI;
 
-    private GameManager gameManager;
-    private ButtonClickSound buttonAudio;
-    private AudioSource audioSource;
     private PlayerMovementController playerMovement;
-    private Collider2D npcCollider2D;
 
     void Start()
     {
-        gameManager = FindAnyObjectByType<GameManager>();
-        buttonAudio = FindAnyObjectByType<ButtonClickSound>();
-        audioSource = GetComponent<AudioSource>();
         playerMovement = FindAnyObjectByType<PlayerMovementController>();
     }
 
@@ -52,9 +47,9 @@ public class NPC : MonoBehaviour
 
     private void EnterDialogueState()
     {
-        //currentNPC = this;
         playerMovement.inDialogue = true;
         playerMovement.SetVelocityToZero();
+        portraitUI.sprite = portrait;
     }
 
     private void PlayNextLine()
@@ -62,7 +57,6 @@ public class NPC : MonoBehaviour
         if (lineNum < lines.Length)
         {
             dialoguePanel.SetActive(true);
-            //npcDialogue.AnimateText(this, lines[lineNum], lineNum);
             npcDialogue.AnimateText();
             lineNum++;
         }
