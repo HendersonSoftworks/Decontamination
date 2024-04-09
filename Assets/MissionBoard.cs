@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MissionBoard : MonoBehaviour
 {
@@ -9,14 +12,22 @@ public class MissionBoard : MonoBehaviour
     private GameObject dialoguePopup;
     [SerializeField]
     private GameObject missionScreen;
+    [SerializeField]
+    private GameObject[] previewImages;
+    [SerializeField]
+    private string[] missionDescs;
+    [SerializeField]
+    private string currentSelectedMission;
+    [SerializeField]
+    private TextMeshProUGUI missionText;
 
     private PlayerMovementController playerMovement;
 
     void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovementController>();
-
         dialoguePopup.SetActive(false);
+        SetLevel1();
     }
 
     void Update()
@@ -24,6 +35,42 @@ public class MissionBoard : MonoBehaviour
         if (!playerMovement.inDialogue && dialoguePopup.activeInHierarchy)
             if (Input.GetKeyDown(KeyCode.Space))
                 OpenMissionScreen();
+    }
+
+    public void LoadMission()
+    {
+        CloseMissionScreen();
+        SceneManager.LoadScene(currentSelectedMission);
+    }
+
+    public void SetLevel1()
+    {
+        previewImages[0].SetActive(true);
+        previewImages[1].SetActive(false);
+        previewImages[2].SetActive(false);
+        missionText.text = missionDescs[0];
+
+        currentSelectedMission = "Level1";
+    }
+
+    public void SetLevel2()
+    {
+        previewImages[0].SetActive(false);
+        previewImages[1].SetActive(true);
+        previewImages[2].SetActive(false);
+        missionText.text = missionDescs[1];
+
+        currentSelectedMission = "Level2";
+    }
+
+    public void SetLevel3()
+    {
+        previewImages[0].SetActive(false);
+        previewImages[1].SetActive(false);
+        previewImages[2].SetActive(true);
+        missionText.text = missionDescs[2];
+
+        currentSelectedMission = "Level3";
     }
 
     private void OpenMissionScreen()

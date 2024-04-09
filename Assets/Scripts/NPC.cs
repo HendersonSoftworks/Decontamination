@@ -29,6 +29,7 @@ public class NPC : MonoBehaviour
     void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovementController>();
+        GameManager.currentNPC = null;
     }
 
     private void Update()
@@ -76,7 +77,7 @@ public class NPC : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         npcDialogue.ClearLines();
-        //npcCollider2D.enabled = true;
+        GameManager.currentNPC = null;
         StartCoroutine(EnableAttack());
     }
 
