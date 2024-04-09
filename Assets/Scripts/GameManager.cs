@@ -40,6 +40,20 @@ public class GameManager : MonoBehaviour
 
     public void OpenLevelCompleteScreen()
     {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Level1":
+                ProgressManager.MarkLevel1Complete();
+                break;
+            case "Level2":
+                ProgressManager.MarkLevel2Complete();
+                break;
+            case "Level3":
+                ProgressManager.MarkLevel3Complete();
+                break;
+            default:
+                break;
+        }
         isPaused = true;
         levelCompleteMenu.SetActive(true);
         Time.timeScale = 0;

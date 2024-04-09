@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         isGameStarting = true;
         buttonClickSound.PlayFloppySound();
-        StartCoroutine(LoadLevel("Level1"));
+        StartCoroutine(LoadLevel("Hub"));
     }
 
     public IEnumerator LoadLevel(string sceneName)

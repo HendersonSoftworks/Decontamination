@@ -20,6 +20,8 @@ public class MissionBoard : MonoBehaviour
     private string currentSelectedMission;
     [SerializeField]
     private TextMeshProUGUI missionText;
+    [SerializeField]
+    private Button[] levelButtons; 
 
     private PlayerMovementController playerMovement;
 
@@ -28,6 +30,25 @@ public class MissionBoard : MonoBehaviour
         playerMovement = FindAnyObjectByType<PlayerMovementController>();
         dialoguePopup.SetActive(false);
         SetLevel1();
+
+        // Check Player progress to determine options
+        if (!ProgressManager.Level1Complete)
+        { 
+            levelButtons[1].interactable = false; 
+        }
+        else
+        {
+            levelButtons[1].interactable = true;
+        }
+
+        if (!ProgressManager.Level2Complete)
+        {
+            levelButtons[2].interactable = false;
+        }
+        else
+        {
+            levelButtons[2].interactable = true;
+        }
     }
 
     void Update()
