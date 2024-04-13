@@ -46,14 +46,21 @@ public class NPC : MonoBehaviour
                 PlayNextLine();
     }
 
-    private void EnterDialogueState()
+    public void EnterDialogueState()
     {
         playerMovement.inDialogue = true;
         playerMovement.SetVelocityToZero();
         portraitUI.sprite = portrait;
     }
 
-    private void PlayNextLine()
+    public void CollideSetup()
+    {
+        dialogueIcon.SetActive(true);
+        GameManager.currentNPC = this;
+        npcDialogue.currentNPC = GameManager.currentNPC.GetComponent<NPC>();
+    }
+
+    public void PlayNextLine()
     {
         if (lineNum < lines.Length)
         {
@@ -91,9 +98,7 @@ public class NPC : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            dialogueIcon.SetActive(true);
-            GameManager.currentNPC = this;
-            npcDialogue.currentNPC = GameManager.currentNPC.GetComponent<NPC>();
+            CollideSetup();
         }
     }
 
