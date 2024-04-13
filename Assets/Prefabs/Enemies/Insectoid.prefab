@@ -1360,7 +1360,8 @@ MonoBehaviour:
   enemyMovement: {fileID: 0}
   combatController: {fileID: 0}
   bloodSplatter: {fileID: 6955384395940951829, guid: dea4ead3a7f75ca49addce0e702e7212, type: 3}
-  weakness: 1
+  nextWeakness: 3
+  currentWeakness: 1
   light2D: {fileID: 0}
 --- !u!50 &1709077829143598984
 Rigidbody2D:

@@ -13,13 +13,15 @@ public class EnemyHealthManager : MonoBehaviour
     public GameObject bloodSplatter;
 
     public enum Weaknesses { water, fire, acid, none}
-    public Weaknesses weakness;
+    public Weaknesses nextWeakness;
+    public Weaknesses currentWeakness;
     public Light2D light2D;
 
     private void Start()
     {
         combatController = FindAnyObjectByType<PlayerCombatController>();
         light2D = GetComponent<Light2D>();
+        nextWeakness = currentWeakness;
     }
 
     void Update()
@@ -30,11 +32,11 @@ public class EnemyHealthManager : MonoBehaviour
             
             if (light2D.intensity > 0)
             {
-                weakness = Weaknesses.none;
+                currentWeakness = Weaknesses.none;
             }
             else
             {
-                weakness = Weaknesses.fire;
+                currentWeakness = nextWeakness;
             }
         }
         
@@ -69,7 +71,7 @@ public class EnemyHealthManager : MonoBehaviour
                 return;
             }
             
-            if ((int)combatController.currentWeapon == (int)weakness)
+            if ((int)combatController.currentWeapon == (int)currentWeakness)
             {
                 health -= currentDamage * combatController.weaponDamageMultipliers[1];
             }
