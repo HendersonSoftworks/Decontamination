@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class BrainBossController : MonoBehaviour
 {
+    public int jointCount;
+
     [SerializeField]
     private float rotSpeed;
     [SerializeField]
-    private GameObject[] joints;
+    public GameObject[] joints;
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
@@ -20,6 +22,7 @@ public class BrainBossController : MonoBehaviour
     void Start()
     {
         EnemyMovementController = GetComponent<EnemyMovementController>();
+        jointCount = joints.Length;
     }
 
     // Update is called once per frame

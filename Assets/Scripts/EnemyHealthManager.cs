@@ -17,11 +17,14 @@ public class EnemyHealthManager : MonoBehaviour
     public Weaknesses currentWeakness;
     public Light2D light2D;
 
+    private BrainBossController bossController;
+
     private void Start()
     {
         combatController = FindAnyObjectByType<PlayerCombatController>();
         light2D = GetComponent<Light2D>();
         nextWeakness = currentWeakness;
+        bossController = GetComponent<BrainBossController>();
     }
 
     void Update()
@@ -58,6 +61,11 @@ public class EnemyHealthManager : MonoBehaviour
     {
         if (collision.tag == "Weapon")
         {
+            if (bossController)
+            {
+                return;
+            }
+
             float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon] * Time.deltaTime;
 
             // Irradiated enemy - doesn't take damage until the radiation has been cleansed
