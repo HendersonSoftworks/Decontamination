@@ -28,12 +28,12 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && gameManager.pickups.Count > 0)
+        if (collision.tag == "Player" && gameManager.contaminants.Count > 0)
         {
             warningText.AnimateWarningText();
         }
 
-        if (collision.tag == "Player" && gameManager.pickups.Count <= 0)
+        if (collision.tag == "Player" && gameManager.contaminants.Count <= 0)
         {
             warningText.AnimateSuccessText();
             StartCoroutine(DelayOpenCompleteMenu());

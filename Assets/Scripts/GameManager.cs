@@ -13,21 +13,30 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public GameObject pauseMenu;
     public GameObject levelCompleteMenu;
-    public List <Pickup> pickups;
+    public List <Pickup> contaminants;
     public GameObject player;
+    public static bool isPlayerDead = false;
+    public GameObject[] drops;
 
     [SerializeField]
     private TextMeshProUGUI remainingTextMesh;
+    [SerializeField]
+    private WarningText warningText;
+    [SerializeField]
+    private GameObject bloodSplatter;
 
     private int initialPickupNum;
     private PlayerCombatController playerCombat;
 
     void Start()
     {
+        isPlayerDead = false;
         player = FindAnyObjectByType<PlayerCombatController>().gameObject;
         playerCombat = player.GetComponent<PlayerCombatController>();
+        warningText = FindAnyObjectByType<WarningText>();
+
         RefreshPickupsArray();
-        initialPickupNum = pickups.Count;
+        initialPickupNum = contaminants.Count;
         SetRemainingPickupUI();
         ClosePauseMenu();
     }
@@ -71,21 +80,21 @@ public class GameManager : MonoBehaviour
 
     public void RefreshPickupsArray()
     {
-        pickups.Clear();
+        contaminants.Clear();
 
         Pickup[] tempPickups = FindObjectsOfType<Pickup>();
         foreach (Pickup pickup in tempPickups)
         {
             if (pickup.isIrradiated)
             {
-                pickups.Add(pickup);
+                contaminants.Add(pickup);
             }
         }
     }
 
     public void SetRemainingPickupUI()
     {
-        remainingTextMesh.text = pickups.Count + " I " + initialPickupNum;
+        remainingTextMesh.text = contaminants.Count + " I " + initialPickupNum;
     }
 
     private void ManagePauseMenu()
@@ -124,9 +133,20 @@ public class GameManager : MonoBehaviour
 
     private void CheckHealth()
     {
-        if (playerCombat.healthPacks <= 0)
+        if (playerCombat.healthPacks <= 0 && !isPlayerDead)
         {
-            print("Player dead");
+            isPlayerDead = true;
+            player.GetComponent<PlayerMovementController>().inDialogue = true;
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            warningText.AnimateDeathText();
+            Instantiate(bloodSplatter, player.transform.position, Quaternion.identity);
+            StartCoroutine(RetryLevel());
         }
+    }
+
+    private IEnumerator RetryLevel()
+    {
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

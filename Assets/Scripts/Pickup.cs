@@ -55,8 +55,16 @@ public class Pickup : MonoBehaviour
                 isIrradiated = false;
                 gameManager.RefreshPickupsArray();
                 gameManager.SetRemainingPickupUI();
+                gameManager.player.GetComponent<AudioSource>().PlayOneShot(gameManager.player.GetComponent<AudioSource>().clip);
+                SpawnDrop();
             }
         }
+    }
+
+    public void SpawnDrop()
+    {
+        int randNum = Random.Range(0, gameManager.drops.Length);
+        Instantiate(gameManager.drops[randNum], transform.position, Quaternion.identity);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

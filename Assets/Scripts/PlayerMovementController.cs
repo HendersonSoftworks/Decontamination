@@ -63,6 +63,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MoveMainCamera(GameObject _mainCam)
     {
+        if (GameManager.isPlayerDead)
+        {
+            return;
+        }
+
         Vector3 camPos = new Vector3(position.x, position.y, -10);
         _mainCam.transform.position = camPos;
     }

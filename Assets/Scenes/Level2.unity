@@ -27544,6 +27544,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3915694153758619140, guid: f5769e09c17960643bc651cfb4f32937, type: 3}
+      propertyPath: deathText
+      value: DEATH IS NOT ACCEPTABLE. TRY AGAIN.
+      objectReference: {fileID: 0}
     - target: {fileID: 3938654758926739091, guid: f5769e09c17960643bc651cfb4f32937, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -28437,6 +28441,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 224932561}
+    - target: {fileID: 5754640150998591086, guid: b17f65b935a251d4888d8b26c287505e, type: 3}
+      propertyPath: bloodSplatter
+      value: 
+      objectReference: {fileID: 6955384395940951829, guid: dea4ead3a7f75ca49addce0e702e7212, type: 3}
     - target: {fileID: 5754640150998591086, guid: b17f65b935a251d4888d8b26c287505e, type: 3}
       propertyPath: levelCompleteMenu
       value: 

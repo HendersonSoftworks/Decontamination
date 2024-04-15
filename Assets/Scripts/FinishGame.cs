@@ -12,8 +12,6 @@ public class FinishGame : MonoBehaviour
     private bool fadeStarted;
     [SerializeField]
     private GameObject fadePanel;
-    [SerializeField]
-    private float fadeSpeed;
     
     void Start()
     {
@@ -25,6 +23,7 @@ public class FinishGame : MonoBehaviour
         if (defeatedNPC.lineNum == defeatedNPC.lines.Length && !fadeStarted)
         {
             fadeStarted = true;
+            fadePanel.SetActive(true);
             StartCoroutine(DelayedLoadToMainMenu());
         }
     }
@@ -34,7 +33,7 @@ public class FinishGame : MonoBehaviour
         var fadeImg = fadePanel.GetComponent<Image>();
         float startAlpha = fadeImg.color.a;
 
-        float rate = 1.0f / fadeSpeed;
+        float rate = 1.0f / 5;
         float progress = 0.0f;
 
         while (progress < 1.0)

@@ -43,11 +43,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 85e8a51d6709b9d44bb191638d45e793, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 5f3df3a96ccfcd5429a923808f72ef45, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.161
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonClickClip: {fileID: 8300000, guid: 3fc1d0c550a0024408cb166d29033532, type: 3}
+  selectClip: {fileID: 0}
   floppyClip: {fileID: 8300000, guid: a9fd331cf85f0cf48a60d118c1c90664, type: 3}

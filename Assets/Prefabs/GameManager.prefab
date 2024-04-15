@@ -48,9 +48,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseMenu: {fileID: 0}
-  pickups: []
+  levelCompleteMenu: {fileID: 0}
+  contaminants: []
   player: {fileID: 0}
+  drops:
+  - {fileID: 5987275118841620965, guid: e8b13eb1b99acc84fb0302d8dca5f136, type: 3}
+  - {fileID: 5987275118841620965, guid: 338e3dff63a9d1c4993bf24133efaafd, type: 3}
+  - {fileID: 5987275118841620965, guid: 250c595369e5a884c93e134bb552757d, type: 3}
+  - {fileID: 5987275118841620965, guid: c4af3d91fc6131948bf2ce5346522a81, type: 3}
   remainingTextMesh: {fileID: 0}
+  warningText: {fileID: 0}
+  bloodSplatter: {fileID: 6955384395940951829, guid: dea4ead3a7f75ca49addce0e702e7212, type: 3}
 --- !u!82 &7310178942266859320
 AudioSource:
   m_ObjectHideFlags: 0

@@ -137,9 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 5635786913181940813}
-  canvas: {fileID: 6118607362859355089}
   currentWeakness: 2
 --- !u!114 &5474570383643541856
 MonoBehaviour:
@@ -494,6 +493,7 @@ GameObject:
   - component: {fileID: 6000359177391737023}
   - component: {fileID: 2005372950554381190}
   - component: {fileID: 2897262749311116759}
+  - component: {fileID: 8953670094837329882}
   m_Layer: 7
   m_Name: Brain1
   m_TagString: Enemy
@@ -593,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 1000
+  boxCollider2D: {fileID: 0}
 --- !u!114 &4735707571720686163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jointCount: 0
+  bossHealthSlider: {fileID: 0}
+  health: 0
+  bossIsDefeated: 0
+  defeatedNPC: {fileID: 0}
   rotSpeed: 10
   joints:
   - {fileID: 5909615975878701793}
@@ -753,6 +758,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &8953670094837329882
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428600994343627437}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e6259038d24fe0142b9b539db9736904, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.164
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &446666840907968548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,9 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 8211158971593617261}
-  canvas: {fileID: 6907062030971614724}
   currentWeakness: 0
 --- !u!114 &4496062589522926640
 MonoBehaviour:
@@ -3487,9 +3587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 4127249026079212488}
-  canvas: {fileID: 3101563598025389947}
   currentWeakness: 1
 --- !u!114 &619717571489109692
 MonoBehaviour:
@@ -4557,9 +4656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 3267153936850822218}
-  canvas: {fileID: 7053253724901231378}
   currentWeakness: 1
 --- !u!114 &6141318603390833575
 MonoBehaviour:
@@ -5033,9 +5131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 8017299257170338603}
-  canvas: {fileID: 7502122130469727991}
   currentWeakness: 2
 --- !u!114 &7602143529614958176
 MonoBehaviour:
@@ -5299,9 +5396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 618146534716627021}
-  canvas: {fileID: 910838966391745090}
   currentWeakness: 0
 --- !u!114 &3821996232597093174
 MonoBehaviour:

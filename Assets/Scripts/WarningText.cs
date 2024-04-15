@@ -8,8 +8,9 @@ public class WarningText : MonoBehaviour
     public float disableDelay;
     public float disableSpeed;
     public string fullText;
-    private string warningText = "ALL CONTAMINANTS MUST BE CLEANSED";
-    private string successText= "ALL CONTAMINANTS CLEANSED - THIS IS ACCEPTABLE";
+    public string warningText = "ALL CONTAMINANTS MUST BE CLEANSED";
+    public string successText = "ALL CONTAMINANTS CLEANSED - THIS IS ACCEPTABLE";
+    public string deathText = "DEATH IS NOT ACCEPTABLE. TRY AGAIN.";
 
     private string currentText = "";
     private TextMeshProUGUI textMesh;
@@ -49,6 +50,18 @@ public class WarningText : MonoBehaviour
 
         StartCoroutine(ShowText());
     }
+
+    public void AnimateDeathText()
+    {
+        fullText = deathText;
+
+        StopAllCoroutines();
+        textMesh.enabled = true;
+        textMesh.color = new Color(1, 1, textMesh.color.b, 1);
+
+        StartCoroutine(ShowText());
+    }
+
 
     public void DisableWarningText()
     {

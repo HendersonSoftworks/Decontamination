@@ -7,6 +7,7 @@ public class ZombieAttackController : MonoBehaviour
     [SerializeField]
     public float pushForce;
 
+    [SerializeField]
     private BoxCollider2D boxCollider2D;
     private SpriteRenderer spriteRenderer;
     private EnemyMovementController enemyMovement;
@@ -14,6 +15,7 @@ public class ZombieAttackController : MonoBehaviour
     private GameObject player;
     private PlayerCombatController PlayerCombatController;
     private PlayerMovementController PlayerMovementController;
+    private BrainBossController bossController;
 
     private void Start()
     {
@@ -21,6 +23,8 @@ public class ZombieAttackController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyMovement = GetComponent<EnemyMovementController>();
         enemyAnimation = GetComponent<EnemyAnimationManager>();
+        bossController = GetComponent<BrainBossController>();
+
         player = FindObjectOfType<PlayerCombatController>().gameObject;
         PlayerCombatController = player.GetComponent<PlayerCombatController>();
         PlayerMovementController = player.GetComponent<PlayerMovementController>();
@@ -36,9 +40,19 @@ public class ZombieAttackController : MonoBehaviour
 
     private IEnumerator TemporarilyDisableCollider()
     {
-        boxCollider2D.enabled = false;
+        if (boxCollider2D != null)
+        {
+            //Debug.Log(name + " BoxCollider2D is now disabled");
+            boxCollider2D.enabled = false;
+        }
+        
         yield return new WaitForSeconds(0.1f);
-        boxCollider2D.enabled = true;
+
+        if (boxCollider2D != null)
+        {
+            //Debug.Log(name + " BoxCollider2D is now enabled");
+            boxCollider2D.enabled = true;
+        }
     }
 
     public void AttackPlayer()
@@ -47,7 +61,11 @@ public class ZombieAttackController : MonoBehaviour
         if (!PlayerCombatController.isInvincible)
         {
             PlayerCombatController.TakeDamage();
-            StartCoroutine(TemporarilyDisableCollider());
+
+            if (bossController == null)
+            {
+                StartCoroutine(TemporarilyDisableCollider());
+            }
         }
 
         // Push player back

@@ -18,9 +18,14 @@ public class EnemyHealthManager : MonoBehaviour
     public Light2D light2D;
 
     private BrainBossController bossController;
+    private GameManager gameManager;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
+        audioSource = GetComponent<AudioSource>();
+
         combatController = FindAnyObjectByType<PlayerCombatController>();
         light2D = GetComponent<Light2D>();
         nextWeakness = currentWeakness;
@@ -58,7 +63,15 @@ public class EnemyHealthManager : MonoBehaviour
     {
         var splatter = Instantiate(bloodSplatter, transform.position, Quaternion.identity);
         splatter.transform.localScale = transform.localScale;
+        SpawnDrop();
+        gameManager.player.GetComponent<AudioSource>().PlayOneShot(gameManager.player.GetComponent<AudioSource>().clip);
         Destroy(gameObject);
+    }
+
+    public void SpawnDrop()
+    {
+        int randNum = Random.Range(0, gameManager.drops.Length);
+        Instantiate(gameManager.drops[randNum], transform.position, Quaternion.identity);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

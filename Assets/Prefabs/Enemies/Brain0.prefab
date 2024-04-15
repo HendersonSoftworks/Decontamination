@@ -1181,9 +1181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 4047037402667961382}
-  canvas: {fileID: 6919407737823810157}
   currentWeakness: 0
 --- !u!114 &6205364607821479193
 MonoBehaviour:
@@ -1565,9 +1564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 3475683157827978771}
-  canvas: {fileID: 0}
   currentWeakness: 1
 --- !u!114 &7587627372094899063
 MonoBehaviour:
@@ -1793,9 +1791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 2134985017349505653}
-  canvas: {fileID: 0}
   currentWeakness: 2
 --- !u!114 &4560601558625920641
 MonoBehaviour:
@@ -2627,9 +2624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 1112940864487766158}
-  canvas: {fileID: 0}
   currentWeakness: 0
 --- !u!114 &1337146775420105160
 MonoBehaviour:
@@ -4458,6 +4454,7 @@ GameObject:
   - component: {fileID: 6254832000091179799}
   - component: {fileID: 6869219017786035837}
   - component: {fileID: 3703458463134525026}
+  - component: {fileID: -3079813737692838915}
   m_Layer: 7
   m_Name: Brain0
   m_TagString: Enemy
@@ -4553,6 +4550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 1000
+  boxCollider2D: {fileID: 0}
 --- !u!114 &7431650840957158210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4703,6 +4701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jointCount: 0
+  bossHealthSlider: {fileID: 0}
+  health: 0
+  bossIsDefeated: 0
+  defeatedNPC: {fileID: 0}
   rotSpeed: 10
   joints:
   - {fileID: 1758910496662862697}
@@ -4713,6 +4715,102 @@ MonoBehaviour:
   - {fileID: 3447791916304903441}
   audioSource: {fileID: 0}
   bossConfigSet: 0
+--- !u!82 &-3079813737692838915
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5695250800317205709}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e6259038d24fe0142b9b539db9736904, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.164
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5745566557791843281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5730,9 +5828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 5919442658712901408}
-  canvas: {fileID: 0}
   currentWeakness: 1
 --- !u!114 &2140447395175293060
 MonoBehaviour:
@@ -6204,9 +6301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8048790eed631944e81655cfd42c3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyed: 0
   health: 100
-  slider: {fileID: 3020436331212922350}
-  canvas: {fileID: 0}
   currentWeakness: 2
 --- !u!114 &5168940420712951621
 MonoBehaviour:
