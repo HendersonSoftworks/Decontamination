@@ -73549,8 +73549,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.02669996, y: 0.05304998, z: 0}
-    m_Extent: {x: 1.6640999, y: 1.22615, z: 0}
+    m_Center: {x: 0.019250035, y: 0.04009998, z: 0}
+    m_Extent: {x: 1.65995, y: 1.2277, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -81863,10 +81863,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brain2
       objectReference: {fileID: 0}
-    - target: {fileID: 8494598834684993135, guid: 6ae16f73cdc24014e857ce50a2bdb787, type: 3}
-      propertyPath: fadePanel
-      value: 
-      objectReference: {fileID: 1798823241}
     - target: {fileID: 8494598834684993135, guid: 6ae16f73cdc24014e857ce50a2bdb787, type: 3}
       propertyPath: audioSource
       value: 

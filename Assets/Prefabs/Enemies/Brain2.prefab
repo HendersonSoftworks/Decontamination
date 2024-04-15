@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 609129851048553928}
   - component: {fileID: 5486268809405170363}
   - component: {fileID: 1060765733126250338}
+  - component: {fileID: 1864340936132382829}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -441,6 +442,18 @@ CircleCollider2D:
   m_Offset: {x: 0.0000019073486, y: -0.0000038146973}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &1864340936132382829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621750569874502789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675415189563346798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1388,7 @@ GameObject:
   - component: {fileID: 8691059024294257226}
   - component: {fileID: 2000651028263326045}
   - component: {fileID: 4423749601384014919}
+  - component: {fileID: 4492956118356190075}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -1534,6 +1548,18 @@ CircleCollider2D:
   m_Offset: {x: 0.0000019073486, y: -0.0000038146973}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &4492956118356190075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070270903309347664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2833765090970439070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1842,7 @@ GameObject:
   - component: {fileID: 851308946271104204}
   - component: {fileID: 6758656864013407332}
   - component: {fileID: 7654293532141809006}
+  - component: {fileID: 1185919870020972813}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -1975,6 +2002,18 @@ CircleCollider2D:
   m_Offset: {x: 0.0000019073486, y: -0.0000038146973}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &1185919870020972813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980408617661219820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3372739186036359973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +2026,7 @@ GameObject:
   - component: {fileID: 1765358399537782237}
   - component: {fileID: 8614682166903790711}
   - component: {fileID: 3254002728604051248}
+  - component: {fileID: 3014498601062983898}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -2146,6 +2186,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &3014498601062983898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372739186036359973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3829512686159112509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2345,7 @@ GameObject:
   - component: {fileID: 3913039750409219419}
   - component: {fileID: 6078757724629501331}
   - component: {fileID: 9072408326827336860}
+  - component: {fileID: 2211480943975867580}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -2452,6 +2505,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &2211480943975867580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879210548939646005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4129916534682509982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,6 +3539,7 @@ MonoBehaviour:
   bossHealthSlider: {fileID: 0}
   health: 0
   bossIsDefeated: 0
+  defeatedNPC: {fileID: 0}
   rotSpeed: 10
   joints:
   - {fileID: 675415189563346798}
@@ -3484,9 +3550,6 @@ MonoBehaviour:
   - {fileID: 859246143246971593}
   audioSource: {fileID: 0}
   bossConfigSet: 0
-  defeatedNPC: {fileID: 0}
-  fadeSpeed: 1
-  fadePanel: {fileID: 0}
 --- !u!50 &2043924252466124586
 Rigidbody2D:
   serializedVersion: 4
@@ -3852,6 +3915,7 @@ GameObject:
   - component: {fileID: 8690762643771974369}
   - component: {fileID: 5619389627572820413}
   - component: {fileID: 5410971584794560021}
+  - component: {fileID: 2144548668696183989}
   m_Layer: 8
   m_Name: hand
   m_TagString: Hand
@@ -4011,6 +4075,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5000001
+--- !u!114 &2144548668696183989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331171019899774656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8828ff119a0b45bdac97221371128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8653857499901869449
 GameObject:
   m_ObjectHideFlags: 0
