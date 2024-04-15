@@ -14,6 +14,11 @@ public class RadioConversation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        StartConversation();
+    }
+
+    public void StartConversation()
+    {
         nPC.EnterDialogueState();
         nPC.PlayNextLine();
         GetComponent<BoxCollider2D>().enabled = false;

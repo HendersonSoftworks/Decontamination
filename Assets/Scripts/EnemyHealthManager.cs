@@ -42,9 +42,12 @@ public class EnemyHealthManager : MonoBehaviour
                 currentWeakness = nextWeakness;
             }
         }
-        
-        slider.value = health;
 
+        if (bossController == null)
+        {
+            slider.value = health;
+        }
+        
         if (health <= 0)
         {
             Die();
@@ -53,7 +56,8 @@ public class EnemyHealthManager : MonoBehaviour
 
     public void Die()
     {
-        Instantiate(bloodSplatter, transform.position, Quaternion.identity);
+        var splatter = Instantiate(bloodSplatter, transform.position, Quaternion.identity);
+        splatter.transform.localScale = transform.localScale;
         Destroy(gameObject);
     }
 

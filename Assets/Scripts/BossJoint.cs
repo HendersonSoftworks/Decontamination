@@ -11,9 +11,12 @@ public class BossJoint : MonoBehaviour
     private EnemyHealthManager enemyHealth;
     private BrainBossController bossController;
 
+    [SerializeField]
+    private bool isDestroyed = false;
+
     public float health;
-    public Slider slider;
-    public Canvas canvas;
+    //public Slider slider;
+    //public Canvas canvas;
     public enum Weaknesses { water, fire, acid, none }
     public Weaknesses currentWeakness;
 
@@ -26,7 +29,9 @@ public class BossJoint : MonoBehaviour
 
     private void Update()
     {
-        slider.value = health;
+        //slider.value = health;
+        //canvas.gameObject.SetActive(false);
+
         if (health <= 0)
         {
             DestroyJoint();
@@ -35,28 +40,41 @@ public class BossJoint : MonoBehaviour
 
     private void DestroyJoint()
     {
+        if (isDestroyed)
+        {
+            return;
+        }
+
+        isDestroyed = true;
+
         GameObject bloodSplatter = Instantiate(enemyHealth.bloodSplatter, transform.position, Quaternion.identity);
         bloodSplatter.transform.localScale = bloodSplatter.transform.localScale * 3;
         bossController.jointCount--;
-        //Destroy(gameObject);
-        gameObject.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isDestroyed)
+        {
+            return;
+        }
+
         if (collision.tag == "Weapon")
         {
-            canvas.gameObject.SetActive(true);
+            //canvas.gameObject.SetActive(true);
 
             float currentDamage = combatController.weaponDamages[(int)combatController.currentWeapon] * Time.deltaTime;
 
             if ((int)combatController.currentWeapon == (int)currentWeakness)
             {
                 health -= currentDamage * combatController.weaponDamageMultipliers[1];
+                bossController.health -= currentDamage * combatController.weaponDamageMultipliers[1];
             }
             else
             {
                 health -= currentDamage;
+                bossController.health -= currentDamage;
             }
         }
     }

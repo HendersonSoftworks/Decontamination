@@ -29,6 +29,7 @@ public class NPCDialogue : MonoBehaviour
         textMesh = GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
         fullText = currentNPC.lines[currentNPC.lineNum];
+        //fullText = GameManager.currentNPC.lines[currentNPC.lineNum];
 
         textMesh.enabled = true;
 

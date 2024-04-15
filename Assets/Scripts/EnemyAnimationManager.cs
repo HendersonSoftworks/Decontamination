@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,15 @@ public class EnemyAnimationManager : MonoBehaviour
     [SerializeField]
     private GameObject healthCanvas;
 
+    private BossJoint[] bossJoints;
+
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovementController>();
         animator = GetComponent<Animator>();
         healthCanvas.SetActive(false);
+
+        bossJoints = GetComponentsInChildren<BossJoint>();
     }
 
     void Update()
@@ -29,6 +34,43 @@ public class EnemyAnimationManager : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
 
+        //if (bossJoints != null)
+        //{
+        //    RevealJointCanvas();
+        //}
+        
+        RevealHealthCanvas();
+    }
+
+    //private void RevealJointCanvas()
+    //{
+    //    for (int i = collidingObjects.Count - 1; i >= 0; i--)
+    //    {
+    //        if (collidingObjects[i].tag == "Weapon")
+    //        {
+    //            foreach (var joint in bossJoints)
+    //            {
+    //                joint.canvas.gameObject.SetActive(true);
+    //            }
+    //        }
+
+    //        if (collidingObjects[i] == null)
+    //        {
+    //            collidingObjects.RemoveAt(i);
+    //        }
+    //    }
+
+    //    if (collidingObjects.Count <= 0)
+    //    {
+    //        foreach (var joint in bossJoints)
+    //        {
+    //            joint.canvas.gameObject.SetActive(false);
+    //        }
+    //    }
+    //}
+
+    private void RevealHealthCanvas()
+    {
         for (int i = collidingObjects.Count - 1; i >= 0; i--)
         {
             if (collidingObjects[i].tag == "Weapon")
