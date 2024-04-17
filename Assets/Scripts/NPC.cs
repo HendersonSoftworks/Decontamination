@@ -34,6 +34,9 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
+        if (MissionBoard.interactingWithMissionBoard)
+            return;
+
         if (this != GameManager.currentNPC)
             return;
 

@@ -8,6 +8,8 @@ using TMPro;
 
 public class MissionBoard : MonoBehaviour
 {
+    public static bool interactingWithMissionBoard;
+
     [SerializeField]
     private GameObject dialoguePopup;
     [SerializeField]
@@ -112,6 +114,7 @@ public class MissionBoard : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             dialoguePopup.SetActive(true);
+            interactingWithMissionBoard = true;
         }
     }
 
@@ -120,6 +123,7 @@ public class MissionBoard : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             dialoguePopup.SetActive(false);
+            interactingWithMissionBoard = false;
         }
     }
 }
