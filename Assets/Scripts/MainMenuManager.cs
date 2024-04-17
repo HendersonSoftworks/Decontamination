@@ -17,6 +17,11 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(LoadLevel("Hub"));
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public IEnumerator LoadLevel(string sceneName)
     {
         yield return new WaitForSeconds(5.5f);

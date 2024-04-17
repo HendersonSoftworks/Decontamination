@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void ClosePauseMenu()
+    public void ClosePauseMenu()
     {
         isPaused = false;
         pauseMenu.SetActive(false);

@@ -21,16 +21,20 @@ public class BrainBossController : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
+    private AudioClip bossClip;
+    [SerializeField]
     private bool bossConfigSet = false;
     
     private EnemyMovementController EnemyMovementController;
     private EnemyHealthManager healthManager;
-    
+    private ZombieAttackController zombieAttack;
+
     // Start is called before the first frame update
     void Start()
     {
         EnemyMovementController = GetComponent<EnemyMovementController>();
         healthManager = GetComponent<EnemyHealthManager>();
+        zombieAttack = GetComponent<ZombieAttackController>();
 
         jointCount = joints.Length;
         bossHealthSlider.gameObject.SetActive(false);
@@ -64,6 +68,7 @@ public class BrainBossController : MonoBehaviour
         if (!bossConfigSet && EnemyMovementController.currentMoveState == EnemyMovementController.MoveStates.chasing)
         {
             GameManager.currentNPC = defeatedNPC;
+            audioSource.clip = bossClip;
             audioSource.Play();
             Camera.main.orthographicSize = 10;
             bossHealthSlider.gameObject.SetActive(true);
@@ -81,6 +86,14 @@ public class BrainBossController : MonoBehaviour
             }
 
             joint.transform.Rotate(0, 0, rotSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            zombieAttack.AttackPlayer();            
         }
     }
 }

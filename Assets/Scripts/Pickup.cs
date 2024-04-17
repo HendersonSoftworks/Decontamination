@@ -63,6 +63,9 @@ public class Pickup : MonoBehaviour
 
     public void SpawnDrop()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+
         int randNum = Random.Range(0, gameManager.drops.Length);
         Instantiate(gameManager.drops[randNum], transform.position, Quaternion.identity);
     }
