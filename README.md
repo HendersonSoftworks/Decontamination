@@ -2,6 +2,8 @@
 ## About
 A 2D survival-adventure game about cleaning irradiated zones and fighting monsters. Made for a game jam with friends in 24 days.
 
+https://hendersonsoftworks.itch.io/decontamination
+
 Chosen theme: Nuclear.
 
 - Manage your resources carefully to complete each level
