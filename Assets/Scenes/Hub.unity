@@ -2675,6 +2675,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3014219812951684482, guid: 72f8d6a9733b82b46bb16168df2c7749, type: 3}
   m_PrefabInstance: {fileID: 8588695738818109228}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &874849975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7280975513599822614, guid: 092a1cb8ff6663d4bb28b3272f46cf1a, type: 3}
+  m_PrefabInstance: {fileID: 5805530961384549456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &874849976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874849975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977ca9ed1f1cf7f4298167f441e4d561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!4 &891729307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4366392861610277184, guid: 36f3b0c9a030bee43aaaef9cfd7209ae, type: 3}
@@ -14488,7 +14506,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7280975513599822614, guid: 092a1cb8ff6663d4bb28b3272f46cf1a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 874849976}
   m_SourcePrefab: {fileID: 100100000, guid: 092a1cb8ff6663d4bb28b3272f46cf1a, type: 3}
 --- !u!1001 &5816988785667024515
 PrefabInstance:
@@ -14932,6 +14953,10 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 463033008}
+    - target: {fileID: 528864456450996376, guid: 7396c63ec3d42094ca5aeba533b492e6, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: Very good! I am Commander Natasha Tsaryov. Leader of DeconTechs.
+      objectReference: {fileID: 0}
     - target: {fileID: 2173129421933959527, guid: 7396c63ec3d42094ca5aeba533b492e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5
